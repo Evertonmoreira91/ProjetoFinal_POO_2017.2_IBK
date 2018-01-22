@@ -9,7 +9,19 @@ package restaurantes;
  *
  * @author WizIBK inck
  */
-public class Cozinheiro extends Funcionario {
+public class Cozinheiro extends Funcionario implements Comparable<Cozinheiro>{
+        private  static int idDaClass;
+        private int id ;
+    
+    
+       public Cozinheiro( String name,float salario, String CPF,Conta caixa, int senha) {
+        this.nome= name;
+        this.salario = salario;
+        this.CPF= CPF;
+        this.conta = caixa;
+        this.senha = senha;
+        this.id = idDaClass++;
+    }
 
     @Override
     public boolean autentica(int password) {
@@ -25,6 +37,15 @@ public class Cozinheiro extends Funcionario {
     @Override
     public void cadastrarBebida() {
         
+    }
+
+    public int getId() {
+        return id;
+    }
+    
+      @Override
+    public int compareTo(Cozinheiro o) {
+        return this.nome.compareTo(o.getNome());
     }
     
     

@@ -11,17 +11,9 @@ package restaurantes;
  */
 public class Conta {
 
-    protected String nome;
+  
     protected float saldo;
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+    
     public float getSaldo() {
         return saldo;
     }
@@ -30,10 +22,7 @@ public class Conta {
         this.saldo = saldo;
     }
     
-    public String toString (){
-        return this.getNome()+" ";
-    }
-    
+
     
     
 }

@@ -9,12 +9,12 @@ package restaurantes;
  *
  * @author WizIBK inck
  */
-public class SobreMesa extends Prato {
-    
+public  class SobreMesa extends Prato {
+
     public SobreMesa(String name , int numero, float preço ) {
         this.nomePrato = name;
         this.preço = preço;
         SobreMesa.id =  SobreMesa.id +1;
     }
-    
+
 }

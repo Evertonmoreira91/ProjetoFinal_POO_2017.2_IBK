@@ -15,4 +15,10 @@ public abstract class Funcionario implements AutenticavelInterno{
     protected String CPF;
     protected Conta conta;
     protected int senha;
+
+    public String getNome() {
+        return nome;
+    }
+    
+
 }

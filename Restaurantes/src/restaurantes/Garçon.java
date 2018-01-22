@@ -9,7 +9,18 @@ package restaurantes;
  *
  * @author WizIBK inck
  */
-public class Garçon extends Funcionario implements FuncionamentoExterno{
+public class Garçon extends Funcionario implements FuncionamentoExterno, Comparable<Garçon>{
+        private  static int idDaClass;
+        private int id ;
+    
+        public Garçon( String name,float salario, String CPF, Conta caixa, int senha) {
+        this.nome= name;
+        this.salario= salario;
+        this.CPF= CPF;
+        this.conta = caixa;
+        this.senha = senha;
+        this.id = idDaClass++;
+    }
 
     @Override
     public boolean autentica(int password) {
@@ -35,6 +46,15 @@ public class Garçon extends Funcionario implements FuncionamentoExterno{
     @Override
     public void devolverTroco() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getId() {
+        return id;
+    }
+    
+    @Override
+    public int compareTo(Garçon o) {
+        return this.nome.compareTo(o.getNome());
     }
     
     

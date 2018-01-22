@@ -10,6 +10,14 @@ package restaurantes;
  * @author WizIBK inck
  */
 public class Proprietario extends Funcionario implements FuncionamentoExterno, PagamentoInterno {
+    
+    
+        public Proprietario( String name, String CPF, Conta caixa, int senha) {
+        this.nome= name;
+        this.CPF= CPF;
+        this.conta = caixa;
+        this.senha = senha;
+    }
 
     @Override
     public boolean autentica(int password) {
