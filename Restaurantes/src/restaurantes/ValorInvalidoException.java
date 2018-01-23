@@ -9,6 +9,12 @@ package restaurantes;
  *
  * @author WizIBK inck
  */
-public interface AutenticavelInterno extends FuncionamentoInterno   {
-    boolean autentica(String password);
+class ValorInvalidoException extends Exception{
+
+    ValorInvalidoException(String message) {
+        super(message);
+    }
+    
+  
+    
 }

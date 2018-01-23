@@ -9,6 +9,10 @@ package restaurantes;
  *
  * @author WizIBK inck
  */
-public interface AutenticavelInterno extends FuncionamentoInterno   {
-    boolean autentica(String password);
+class InputMismatchException extends java.util.InputMismatchException {
+
+    public InputMismatchException(String message) {
+        super(message);
+    }
+    
 }

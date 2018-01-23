@@ -5,6 +5,8 @@
  */
 package restaurantes;
 
+
+
 /**
  *
  * @author WizIBK inck
@@ -14,11 +16,20 @@ public abstract class Funcionario implements AutenticavelInterno{
     protected float salario;
     protected String CPF;
     protected Conta conta;
-    protected int senha;
+    protected String senha;
 
-    public String getNome() {
-        return nome;
-    }
+    public abstract String getNome();
+    public abstract String getCPF();
+    public abstract float getSalario();
+    public abstract Conta getConta();
+    public abstract String getSenha(); 
+    public abstract void setCPF(String CPF) throws ValorInvalidoException;
+    public abstract void setConta(Conta conta) ;
+    public abstract void setNome(String nome);
+    public abstract void setSalario(float salario)throws InputMismatchException;
+    public abstract void setSenha(String senha)throws ValorInvalidoException;
+    @Override
+    public abstract String toString();
     
 
 }
