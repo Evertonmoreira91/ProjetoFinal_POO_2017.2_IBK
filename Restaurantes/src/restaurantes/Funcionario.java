@@ -23,11 +23,11 @@ public abstract class Funcionario implements AutenticavelInterno{
     public abstract float getSalario();
     public abstract Conta getConta();
     public abstract String getSenha(); 
-    public abstract void setCPF(String CPF) throws ValorInvalidoException;
+    public abstract void setCPF(String CPF) ;
     public abstract void setConta(Conta conta) ;
     public abstract void setNome(String nome);
-    public abstract void setSalario(float salario)throws InputMismatchException;
-    public abstract void setSenha(String senha)throws ValorInvalidoException;
+    public abstract void setSalario(float salario);
+    public abstract void setSenha(String senha);
     @Override
     public abstract String toString();
     

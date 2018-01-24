@@ -15,17 +15,13 @@ public final class Garçon extends Funcionario implements FuncionamentoExterno, 
         private  static int idDaClass;
         private int id ;
     
-        public Garçon( String name,float salario, String CPF, Conta caixa, String senha) throws ValorInvalidoException {
-       try{
+        public Garçon( String name,float salario, String CPF, Conta caixa, String senha) {
         setNome(name);
         setSalario(salario);
         setCPF(CPF);
         setConta(caixa);
         setSenha(senha);
         this.id = idDaClass++;
-         } catch (ValorInvalidoException |InputMismatchException e){
-            System.err.println(e.getMessage());
-        }
     }
 
         @Override
@@ -112,13 +108,10 @@ public final class Garçon extends Funcionario implements FuncionamentoExterno, 
         return this.senha;
     }
 
-    public void setCPF(String CPF) throws ValorInvalidoException  {
-        if ( CPF.length()== 11){
+    public void setCPF(String CPF)  {
             this.CPF = CPF;
-        } else {
-            throw new ValorInvalidoException("O CPF deve conter 11 digitos "+CPF);
-        }
     }
+
 
     public void setConta(Conta conta) {
         this.conta=conta;
@@ -128,27 +121,16 @@ public final class Garçon extends Funcionario implements FuncionamentoExterno, 
         this.nome = nome;
     }
 
-    public void setSalario(float salario) throws InputMismatchException{
-        
-        if ( "float".equals(nameOf(salario))){
-            this.salario =salario;
-        }else{
-            throw new InputMismatchException ("Valor invalido: Digite Valores reais "+salario);
-        }
+    public void setSalario(float salario) {
+        this.salario = salario;
     }
- // Gerar o tipo do objeto
-        private static String nameOf(Object o) {
-                return o.getClass().getSimpleName();
+     
+
+    public void setSenha(String senha)  {
+            this.senha = senha;
+        
     }
 
-    public void setSenha(String senha) throws ValorInvalidoException {
-         if ( senha.length()== 11){
-            this.senha = senha;
-        } else {
-            throw new ValorInvalidoException("Senha INVALIDA: 6 digitos  "+senha);
-        }
-        
-    }
 
     
     

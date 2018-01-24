@@ -12,15 +12,13 @@ package restaurantes;
 public final class Proprietario extends Funcionario implements FuncionamentoExterno, PagamentoInterno {
     
     
-        public Proprietario( String name, String CPF, Conta caixa, String senha) throws ValorInvalidoException {
-        try {
+        public Proprietario( String name, String CPF, Conta caixa, String senha) {
+       
         setNome(name);
         setCPF(CPF);
         setConta(caixa);
         setSenha(senha);
-        } catch (ValorInvalidoException e){
-            System.err.println(e.getMessage());
-        }
+        
     }
 
     @Override
@@ -90,12 +88,9 @@ public final class Proprietario extends Funcionario implements FuncionamentoExte
         return this.senha;
     }
 
-    public void setCPF(String CPF) throws ValorInvalidoException  {
-        if ( CPF.length()== 11){
+
+  public void setCPF(String CPF)  {
             this.CPF = CPF;
-        } else {
-            throw new ValorInvalidoException("O CPF deve conter 11 digitos "+CPF);
-        }
     }
 
     public void setConta(Conta conta) {
@@ -106,20 +101,13 @@ public final class Proprietario extends Funcionario implements FuncionamentoExte
         this.nome = nome;
     }
 
-    public void setSalario(float salario) {
-         try {
-            this.salario = salario;
-        }catch (IllegalArgumentException e){
-            System.err.println("Valor invalido: "+salario);
-        }
+ public void setSalario(float salario) {
+        this.salario = salario;
     }
+     
 
-    public void setSenha(String senha) throws ValorInvalidoException {
-         if ( senha.length()== 11){
+    public void setSenha(String senha)  {
             this.senha = senha;
-        } else {
-            throw new ValorInvalidoException("Senha INVALIDA: 6 digitos  "+senha);
-        }
         
     }
     

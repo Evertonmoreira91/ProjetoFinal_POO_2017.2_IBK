@@ -19,12 +19,13 @@ public class Restaurantes {
       TreeSet<Cozinheiro> listaCozinheiro = new TreeSet<>();
    
     
-    public void cadastrarFuncionario () throws Exception{
+    public void cadastrarFuncionario () throws Exception,ValorInvalidoException{
          String nome ;
          float salario = 0 ;
-         String CPF ;
-         String senha ;
+         String CPF = null ;
+         String senha = null ;
          int primeiraVeze=0 ,i , n ;
+         boolean continuar = true;
          
         if (primeiraVeze == 0){
 //       CADASTRANDO O PROPRIETARIO
@@ -33,13 +34,35 @@ public class Restaurantes {
         System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
         System.out.println("Digite o NOME de Proprietario.");
         nome = in.nextLine();
-        System.out.println("Digite o CPF do Proprietario.");
-        CPF = in.next();
-        System.out.println("Digite A SENHA do Proprietario.");
-        senha = in.next();
+        while (continuar) {
+                   System.out.println("Digite o CPF do Proprietario.");
+                  try {                
+                     CPF = in.nextLine();
+                  if (CPF.length()== 11) {   
+                    continuar = false;
+                  }
+                } catch (Exception e) {
+                   throw new ValorInvalidoException("O CPF deve conter 11 digitos "+CPF);
+    //                  System.out.println("Valor invádlido!" + e.getMessage());
+                }
+              } 
+        continuar = true;  
+        while (continuar) {
+                System.out.println("Digite A SENHA do Proprietario.");
+                 try {                
+                 senha = in.next();
+                if (senha.length()== 6) {   
+                    continuar = false;
+                }
+              } catch( Exception e) {
+               throw new ValorInvalidoException("Senha INVALIDA: 6 digitos  "+senha);
+             }
+            } 
+        continuar = true;
         Conta caixa = new Conta();
         Funcionario dono = new Proprietario( nome, CPF , caixa, senha);
         System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n\n");
+        
 //        CADASTRANDO O GERENTE
         System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
         System.out.println(" O SENHOR DESEJA CADASTRAR UM GERENTE?");
@@ -51,18 +74,50 @@ public class Restaurantes {
         System.out.println("Digite o NOME de Gerente.");
         in.next();
         nome = in.nextLine();
-        System.out.println("Digite o SALARIO do Gerente.");
-        salario = in.nextFloat();
-        System.out.println("Digite o CPF do Gerente.");
-        in.next();
-        CPF = in.next();
-        System.out.println("Digite A SENHA do Gerente.");
-        senha = in.next();
+        while (continuar) {
+            System.out.println("Digite o SALARIO do Gerente.");
+            try {                
+                salario = Float.parseFloat(in.next());
+                if (salario >= 0.0) {   
+                    continuar = false;
+                }
+            } catch (Exception e) {
+                in.reset();
+                System.out.println("Valor invádlido!" + e.getMessage());
+            }
+        }
+        continuar = true;       
+      
+         while (continuar) {
+                  System.out.println("Digite o CPF do Gerente.");
+                  try { 
+                     CPF = in.next();
+                  if (CPF.length()== 11) {   
+                    continuar = false;
+                  }
+                } catch (Exception e) {
+                     throw new ValorInvalidoException("O CPF deve conter 11 digitos "+CPF);
+                }
+              } 
+        continuar = true;  
+        while (continuar) {
+                System.out.println("Digite A SENHA do Gerente.");
+                try {                
+                 senha = in.next();
+                if (senha.length()== 6) {   
+                    continuar = false;
+                }
+              } catch( Exception e) {
+               throw new ValorInvalidoException("Senha INVALIDA: 6 digitos  "+senha);
+             }
+            } 
+        continuar = true;
         Conta gerenteConta = new Conta();
         Funcionario gerente = new Gerente( nome , salario , CPF , gerenteConta, senha);
         listaGerente.add((Gerente) gerente);
         System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n\n");
         }
+        
 // CADASTRANDO O(S) COZINHEIROS
         System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
         System.out.println("CADASTRANDO O(S) COZINHEIROS.");
@@ -75,13 +130,44 @@ public class Restaurantes {
             System.out.println("Digite o NOME do Cozinheiro.");
             in.next();
             nome = in.nextLine();
+            while (continuar) {
             System.out.println("Digite o SALARIO do Cozinheiro.");
-            salario = in.nextFloat();
-            System.out.println("Digite o CPF do Cozinheiro.");
-            in.next();
-            CPF = in.next();
-            System.out.println("Digite A SENHA do Cozinheiro.");
-            senha = in.next();
+            try {                
+                salario = Float.parseFloat(in.next());
+                if (salario >= 0.0) {   
+                    continuar = false;
+                }
+            } catch (Exception e) {
+                in.reset();
+                System.out.println("Valor invádlido!" + e.getMessage());
+            }
+             }
+            continuar = true;
+            
+           while (continuar) {
+                 System.out.println("Digite o CPF do Cozinheiro.");
+                  try {                
+                     CPF = in.next();
+                  if (CPF.length()== 11) {   
+                    continuar = false;
+                  }
+                } catch (Exception e) {
+                     throw new ValorInvalidoException("O CPF deve conter 11 digitos "+CPF);
+                }
+              } 
+             continuar = true;           
+             while (continuar) {
+                System.out.println("Digite A SENHA do Cozinheiro.");
+                try {                
+                 senha = in.next();
+                if (senha.length()== 6) {   
+                    continuar = false;
+                }
+              } catch( Exception e) {
+               throw new ValorInvalidoException("Senha INVALIDA: 6 digitos  "+senha);
+             }
+            } 
+            continuar = true;
             cozinheiroConta [i] = new Conta();
             cozinheiro [i] = new Cozinheiro(nome,salario,CPF, cozinheiroConta[i],senha);
             listaCozinheiro.add((Cozinheiro) cozinheiro[i]);
@@ -99,13 +185,44 @@ public class Restaurantes {
             System.out.println("Digite o NOME DO GARÇON.");
             in.next();
             nome = in.nextLine();
-            System.out.println("Digite o SALARIO DO GARÇON..");
-            salario = in.nextFloat();
-            System.out.println("Digite o CPF DO GARÇON..");
-            in.next();
-            CPF = in.next();
-            System.out.println("Digite A SENHA DO GARÇON..");
-            senha = in.next();
+            while (continuar) {
+           System.out.println("Digite o SALARIO DO GARÇON..");
+            try {                
+                salario = Float.parseFloat(in.next());
+                if (salario >= 0.0) {   
+                    continuar = false;
+                }
+            } catch (Exception e) {
+                in.reset();
+                System.out.println("Valor invádlido!" + e.getMessage());
+            }
+             }
+            continuar = true;            
+            
+             while (continuar) {
+                     System.out.println("Digite o CPF DO GARÇON..");
+                      try {                
+                          CPF = in.next();
+                          if (CPF.length()== 11) {   
+                              continuar = false;
+                          }
+                      } catch (Exception e) {
+                         throw new ValorInvalidoException("O CPF deve conter 11 digitos "+CPF);
+                      }
+                     } 
+             continuar = true;
+             while (continuar) {
+                    System.out.println("Digite A SENHA DO GARÇON..");
+                      try {                
+                         senha = in.next();
+                          if (senha.length()== 6) {   
+                              continuar = false;
+                          }
+                         } catch( Exception e) {
+                         throw new ValorInvalidoException("Senha INVALIDA: 6 digitos  "+senha);
+                      }
+                     } 
+            continuar = true;
             garçonConta [i] = new Conta();
             garçon [i] = new Garçon(nome,salario,CPF, garçonConta[i],senha);
             listaGarçon.add((Garçon) garçon[i]);
@@ -123,14 +240,45 @@ public class Restaurantes {
                      System.out.println("CADASTRANDO O GERENTE.");
                      System.out.println("Digite o NOME de Gerente.");
                      in.next();
-                     nome = in.nextLine();
-                     System.out.println("Digite o SALARIO do Gerente.");
-                     salario = in.nextFloat();
+                     nome = in.nextLine();                     
+                    while (continuar) {
+                    System.out.println("Digite o SALARIO do Gerente.");
+                      try {                
+                          salario = Float.parseFloat(in.next());
+                          if (salario >= 0.0) {   
+                              continuar = false;
+                          }
+                      } catch (Exception e) {
+                          in.reset();
+                          System.out.println("Valor invádlido!" + e.getMessage());
+                      }
+                       }
+                     continuar = true;
+                     
+                     while (continuar) {
                      System.out.println("Digite o CPF do Gerente.");
-                     in.next();
-                     CPF = in.next();
+                      try {                
+                          CPF = in.next();
+                          if (CPF.length()== 11) {   
+                              continuar = false;
+                          }
+                      } catch (Exception e) {
+                         throw new ValorInvalidoException("O CPF deve conter 11 digitos "+CPF);
+                      }
+                     } 
+                     continuar = true;
+                     while (continuar) {
                      System.out.println("Digite A SENHA do Gerente.");
-                     senha = in.next();
+                      try {                
+                         senha = in.next();
+                          if (senha.length()== 6) {   
+                              continuar = false;
+                          }
+                         } catch( Exception e) {
+                         throw new ValorInvalidoException("Senha INVALIDA: 6 digitos  "+senha);
+                      }
+                     } 
+                     continuar = true;
                      Conta gerenteConta = new Conta();
                      Funcionario gerente = new Gerente( nome , salario , CPF , gerenteConta, senha);
                      listaGerente.add((Gerente) gerente);
@@ -142,14 +290,45 @@ public class Restaurantes {
                      System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
                      System.out.println("Digite o NOME do Cozinheiro.");
                      in.next();
-                     nome = in.nextLine();
-                     System.out.println("Digite o SALARIO do Cozinheiro.");
-                     salario = in.nextFloat();
+                     nome = in.nextLine();                     
+                      while (continuar) {
+                    System.out.println("Digite o SALARIO do Cozinheiro.");
+                      try {                
+                          salario = Float.parseFloat(in.next());
+                          if (salario >= 0.0) {   
+                              continuar = false;
+                          }
+                      } catch (Exception e) {
+                          in.reset();
+                          System.out.println("Valor invádlido!" + e.getMessage());
+                      }
+                       }
+                     continuar = true;                   
+                  
+                   while (continuar) {
                      System.out.println("Digite o CPF do Cozinheiro.");
-                     in.next();
-                     CPF = in.next();
+                      try {                
+                          CPF = in.next();
+                          if (CPF.length()== 11) {   
+                              continuar = false;
+                          }
+                      } catch (Exception e) {
+                         throw new ValorInvalidoException("O CPF deve conter 11 digitos "+CPF);
+                      }
+                     } 
+                     continuar = true;
+                      while (continuar) {
                      System.out.println("Digite A SENHA do Cozinheiro.");
-                     senha = in.next();
+                      try {                
+                         senha = in.next();
+                          if (senha.length()== 6) {   
+                              continuar = false;
+                          }
+                         } catch( Exception e) {
+                         throw new ValorInvalidoException("Senha INVALIDA: 6 digitos  "+senha);
+                      }
+                     } 
+                     continuar = true;
                      Conta cozinheiroConta = new Conta();
                      Funcionario cozinheiro = new Cozinheiro(nome,salario,CPF, cozinheiroConta,senha);
                      listaCozinheiro.add((Cozinheiro) cozinheiro);
@@ -161,14 +340,45 @@ public class Restaurantes {
                      System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
                      System.out.println("Digite o NOME DO GARÇON.");
                      in.next();
-                     nome = in.nextLine();
-                     System.out.println("Digite o SALARIO DO GARÇON..");
-                     salario = in.nextFloat();
-                     System.out.println("Digite o CPF DO GARÇON..");
-                     in.next();
-                     CPF = in.next();
+                     nome = in.nextLine();                    
+                    while (continuar) {
+                    System.out.println("Digite o SALARIO DO GARÇON..");
+                      try {                
+                          salario = Float.parseFloat(in.next());
+                          if (salario >= 0.0) {   
+                              continuar = false;
+                          }
+                      } catch (Exception e) {
+                          in.reset();
+                          System.out.println("Valor invádlido!" + e.getMessage());
+                      }
+                       }
+                    continuar = true;
+                    
+                    while (continuar) {
+                    System.out.println("Digite o CPF DO GARÇON..");
+                      try {                
+                          CPF = in.next();
+                          if (CPF.length()== 11) {   
+                              continuar = false;
+                          }
+                      } catch (Exception e) {
+                         throw new ValorInvalidoException("O CPF deve conter 11 digitos "+CPF);
+                      }
+                     } 
+                     continuar = true;                     
+                    while (continuar) {
                      System.out.println("Digite A SENHA DO GARÇON..");
-                     senha = in.next();
+                      try {                
+                         senha = in.next();
+                          if (senha.length()== 6) {   
+                              continuar = false;
+                          }
+                         } catch( Exception e) {
+                         throw new ValorInvalidoException("Senha INVALIDA: 6 digitos  "+senha);
+                      }
+                     } 
+                     continuar = true;
                      Conta garçonConta = new Conta();
                      Funcionario garçon = new Garçon(nome,salario,CPF, garçonConta,senha);
                      listaGarçon.add((Garçon) garçon);
@@ -180,29 +390,24 @@ public class Restaurantes {
         }
     }
     
+    
     public void imprimirListaDosFuncionarios (){
         System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n IMPRIMINDO A lISTA DOS GERENTES \n *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
-//        for (Gerente gerentes : listaGerente){
-//            System.out.println(gerentes);
-//        }
+
            Iterator<Gerente> iterator0 = listaGerente.iterator();
            while (iterator0.hasNext()){
                System.out.println( iterator0.next()+" ");
            }
         System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n IMPRIMINDO A lISTA DOS COZINHEIROS \n *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
-//         for (Cozinheiro cozinheiros : listaCozinheiro){
-//            System.out.println(cozinheiros);
-//        }
+        
             Iterator<Cozinheiro> iterator1 = listaCozinheiro.iterator();
            while (iterator1.hasNext()){
                System.out.println( iterator1.next()+" ");
            }
         
         System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n IMPRIMINDO A lISTA DOS GARÇONS \n *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*");
-//         for (Garçon garçons : listaGarçon){
-//            System.out.println(garçons);
-//        }
-             Iterator<Garçon> iterator2 = listaGarçon.iterator();
+         
+        Iterator<Garçon> iterator2 = listaGarçon.iterator();
            while (iterator2.hasNext()){
                System.out.println( iterator2.next()+" ");
            }
