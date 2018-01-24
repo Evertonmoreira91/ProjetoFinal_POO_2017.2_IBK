@@ -10,28 +10,23 @@ package restaurantes;
  * @author WizIBK inck
  */
 public abstract class Bebida {
-    String nomeBebida;
+    String nomeBebida ;
     int quantidade;
-    static int id;
+    int id;
     float preço;
-    int quantidadeDisponivel;
 
-    public String getNomeBebida() {
-        return nomeBebida;
-    }
+    public abstract String getNomeBebida();
+    public abstract int getQuantidade();
+    public abstract float getPreço();
+    public abstract int getId();
+    public abstract void setId(int id);
+    public abstract void setNomeBebida(String nomeBebida);
+    public abstract void setQuantidade(int quantidade);
+    public abstract void setPreço(float preço);
 
-    public float getPreço() {
-        return preço;
-    }
-
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public void setPreço(float preço) {
-        this.preço = preço;
-    }
-    
+    @Override
+    public abstract String toString();
+     
     
     
     

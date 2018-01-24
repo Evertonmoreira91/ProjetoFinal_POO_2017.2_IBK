@@ -13,7 +13,7 @@ import java.util.InputMismatchException;
  */
 public final class Gerente extends Funcionario implements FuncionamentoExterno, Comparable<Gerente>{
     private  static int idDaClass;
-    private int id ;
+    public int id ;
     
     
        public Gerente( String name,float salario, String CPF, Conta caixa, String senha) {
@@ -29,7 +29,10 @@ public final class Gerente extends Funcionario implements FuncionamentoExterno, 
 
  @Override
     public boolean autentica(String password) {
-       return false;
+     if (this.senha != password){
+            return false;
+      } 
+      return true;
     }
 
     @Override

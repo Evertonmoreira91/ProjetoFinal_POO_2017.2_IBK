@@ -23,7 +23,10 @@ public final class Proprietario extends Funcionario implements FuncionamentoExte
 
     @Override
     public boolean autentica(String password) {
-       return true;
+     if (this.senha != password){
+            return false;
+      } 
+      return true;
     }
 
     @Override

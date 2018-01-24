@@ -12,6 +12,7 @@ import java.util.InputMismatchException;
  * @author WizIBK inck
  */
 public final class Garçon extends Funcionario implements FuncionamentoExterno, Comparable<Garçon>{
+        
         private  static int idDaClass;
         private int id ;
     
@@ -26,8 +27,10 @@ public final class Garçon extends Funcionario implements FuncionamentoExterno, 
 
         @Override
   public boolean autentica(String password) {
-        
-        return true;
+      if (this.senha != password){
+            return false;
+      } 
+      return true;
     }
 
     @Override

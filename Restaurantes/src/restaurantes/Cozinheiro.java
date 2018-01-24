@@ -26,8 +26,10 @@ public final class Cozinheiro extends Funcionario implements Comparable<Cozinhei
 
     @Override
     public boolean autentica(String password) {
-        
-        return false;
+       if (this.senha != password){
+            return false;
+      } 
+      return true;
     }
 
     @Override

@@ -12,14 +12,12 @@ package restaurantes;
 public class ClienteVIP extends Cliente {
     String nome;
     int redução;
-    int senhaVip;
     static int numeroDeClienteVip;
     
    
-    ClienteVIP(String name, int redução , int senha){
+    ClienteVIP(String name, int redução){
         this.nome = name;
         this.redução = redução;
-        this.senhaVip = senha;
         ClienteVIP.numeroDeClienteVip = ClienteVIP.numeroDeClienteVip + 1;
     }
     

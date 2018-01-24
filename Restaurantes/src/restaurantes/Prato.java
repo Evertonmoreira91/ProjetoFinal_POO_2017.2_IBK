@@ -12,20 +12,22 @@ package restaurantes;
 public abstract class Prato {
     String nomePrato ;
     int quantidade;
-    static int id;
+    int id;
     float preço;
-    int quantidadeDisponivel;
 
-    public String getNomePrato() {
-        return nomePrato;
-    }
+    public abstract String getNomePrato();
+    public abstract int getQuantidade();
+    public abstract float getPreço();
+    public abstract int getId();
+    public abstract void setId(int id);
+    public abstract void setNomePrato(String nomePrato);
+    public abstract void setQuantidade(int quantidade);
+    public abstract void setPreço(float preço);
 
-    public int getQuantidade() {
-        return quantidade;
-    }
-
-    public float getPreço() {
-        return preço;
-    }
+    @Override
+    public abstract String toString();
+     
+    
+    
     
 }
