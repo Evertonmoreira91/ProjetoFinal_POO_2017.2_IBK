@@ -5,14 +5,18 @@
  */
 package restaurantes;
 
+import java.util.TreeSet;
+
 /**
  *
  * @author WizIBK inck
  */
 public interface PagamentoInterno {
-    
-    void pagarSalarioMensuais();
-    void pagarAsCompras();
-    void pagarAsManutenções();
-    
+
+    void pagarSalarioMensuais(TreeSet<Funcionario> lista);
+
+    void pagarAsCompras(float valor);
+
+    void pagarAsManutenções(float valor);
+
 }

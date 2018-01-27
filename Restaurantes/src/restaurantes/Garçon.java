@@ -5,89 +5,77 @@
  */
 package restaurantes;
 
+import java.io.Serializable;
 import java.util.InputMismatchException;
+import java.util.TreeSet;
 
 /**
  *
  * @author WizIBK inck
  */
-public final class Garçon extends Funcionario implements FuncionamentoExterno, Comparable<Garçon>{
-        
-        private  static int idDaClass;
-        private int id ;
-    
-        public Garçon( String name,float salario, String CPF, Conta caixa, String senha) {
+public  class Garçon extends Funcionario implements FuncionamentoExterno, Comparable<Garçon> ,Serializable{
+
+    private static int idDaClass;
+    private int id;
+
+    public Garçon(String name, float salario, String CPF, Conta caixa, String senha, String cargo) {
         setNome(name);
         setSalario(salario);
         setCPF(CPF);
         setConta(caixa);
         setSenha(senha);
+        setCargo(cargo);
         this.id = idDaClass++;
     }
 
-        @Override
-  public boolean autentica(String password) {
-      if (this.senha != password){
-            return false;
-      } 
-      return true;
+    public void efectuarPagamento(TreeSet<Proprietario> lista, float valor) {
+        for (Proprietario dono : lista) {
+            dono.getConta().saldo = dono.getConta().saldo + valor;
+        }
     }
 
-    @Override
-    public void cadastrarPrato() {
-        
-    }
-
-    @Override
-    public void cadastrarBebida() {
-        
-    }
-
-    @Override
-    public void efectuarPagamento() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void devolverTroco() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void devolverTroco(TreeSet<Proprietario> lista, float valor) {
+        for (Proprietario dono : lista) {
+            dono.getConta().saldo = dono.getConta().saldo + valor;
+        }
     }
 
     public int getId() {
         return id;
     }
-    
+
     @Override
     public int compareTo(Garçon o) {
-        if (this.getId() > o.getId()){
+        if (this.getId() > o.getId()) {
             return 1;
-        }else if (this.getId() < o.getId()){
+        } else if (this.getId() < o.getId()) {
             return -1;
-        }else {
+        } else {
             return 0;
         }
     }
-    
+
     @Override
     public boolean equals(Object obj) {
-        
-        if (obj == null || !(obj instanceof Garçon))
+
+        if (obj == null || !(obj instanceof Garçon)) {
             return false;
-        else
-            return (this.id == ((Garçon)obj).getId());
+        } else {
+            return (this.id == ((Garçon) obj).getId());
+        }
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
-        int result =1;
-        result = prime * result + ((nome == null)? 0 : nome.hashCode());
-        return result; 
+        int result = 1;
+        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+        return result;
     }
 
     @Override
     public String toString() {
-        return " Id "+ getId()+" - "+getNome()+" CPF: "+ getCPF();
+        return " Id " + getId() + " - " + getNome() + " CPF: " + getCPF();
     }
 
     @Override
@@ -96,7 +84,7 @@ public final class Garçon extends Funcionario implements FuncionamentoExterno, 
     }
 
     public String getCPF() {
-       return this.CPF;
+        return this.CPF;
     }
 
     public float getSalario() {
@@ -111,13 +99,12 @@ public final class Garçon extends Funcionario implements FuncionamentoExterno, 
         return this.senha;
     }
 
-    public void setCPF(String CPF)  {
-            this.CPF = CPF;
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 
-
     public void setConta(Conta conta) {
-        this.conta=conta;
+        this.conta = conta;
     }
 
     public void setNome(String nome) {
@@ -127,14 +114,30 @@ public final class Garçon extends Funcionario implements FuncionamentoExterno, 
     public void setSalario(float salario) {
         this.salario = salario;
     }
-     
 
-    public void setSenha(String senha)  {
-            this.senha = senha;
-        
+    public void setSenha(String senha) {
+        this.senha = senha;
+
     }
 
+    @Override
+    public String getCargo() {
+        return this.cargo;
+    }
 
-    
-    
+    @Override
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    @Override
+    public void efectuarPagamento(float valor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void devolverTroco(float valor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

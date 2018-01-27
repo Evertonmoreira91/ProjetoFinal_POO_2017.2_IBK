@@ -10,6 +10,8 @@ package restaurantes;
  * @author WizIBK inck
  */
 public interface FuncionamentoExterno {
-    public void efectuarPagamento();
-    public void devolverTroco();
+
+    public void efectuarPagamento(float valor);
+
+    public void devolverTroco(float valor);
 }

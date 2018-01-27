@@ -5,69 +5,60 @@
  */
 package restaurantes;
 
+import java.io.Serializable;
+import java.util.TreeSet;
+
 /**
  *
  * @author WizIBK inck
  */
-public final class Proprietario extends Funcionario implements FuncionamentoExterno, PagamentoInterno {
-    
-    
-        public Proprietario( String name, String CPF, Conta caixa, String senha) {
-       
+public  class Proprietario extends Funcionario implements FuncionamentoExterno, PagamentoInterno, Comparable<Proprietario>,Serializable{
+        static int id;
+    public Proprietario(String name, String CPF, Conta caixa, String senha, String cargo) {
+
         setNome(name);
         setCPF(CPF);
         setConta(caixa);
+        this.conta.saldo= 30000;
         setSenha(senha);
-        
+        setCargo(cargo);
+        this.id = 1;
+
     }
 
     @Override
-    public boolean autentica(String password) {
-     if (this.senha != password){
-            return false;
-      } 
-      return true;
+    public void efectuarPagamento(float valor) {
+        this.conta.saldo = this.conta.saldo + valor;
     }
 
     @Override
-    public void cadastrarPrato() {
-        
+    public void devolverTroco(float valor) {
+        this.conta.saldo = this.conta.saldo - valor;
+
     }
 
     @Override
-    public void cadastrarBebida() {
-        
+    public void pagarSalarioMensuais(TreeSet<Funcionario> lista) {
+
+        for (Funcionario funcionarios : lista) {
+            this.conta.saldo = this.conta.saldo - funcionarios.getSalario();
+        }
+        System.out.println(" Pagamentos MENSUAIS com Sucesso");
     }
 
     @Override
-    public void efectuarPagamento() {
-       
+    public void pagarAsCompras(float valor) {
+        this.conta.saldo = this.conta.saldo - valor;
     }
 
     @Override
-    public void devolverTroco() {
-        
+    public void pagarAsManutenções(float valor) {
+        this.conta.saldo = this.conta.saldo - valor;
     }
 
     @Override
-    public void pagarSalarioMensuais() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void pagarAsCompras() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void pagarAsManutenções() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
-     @Override
     public String toString() {
-        return "Proprietario "+" - "+getNome()+" CPF: "+ getCPF();
+        return "Proprietario " + " - " + getNome() + " CPF: " + getCPF();
     }
 
     @Override
@@ -76,7 +67,7 @@ public final class Proprietario extends Funcionario implements FuncionamentoExte
     }
 
     public String getCPF() {
-       return this.CPF;
+        return this.CPF;
     }
 
     public float getSalario() {
@@ -91,27 +82,50 @@ public final class Proprietario extends Funcionario implements FuncionamentoExte
         return this.senha;
     }
 
-
-  public void setCPF(String CPF)  {
-            this.CPF = CPF;
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 
     public void setConta(Conta conta) {
-        this.conta=conta;
+        this.conta = conta;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
- public void setSalario(float salario) {
+    public void setSalario(float salario) {
         this.salario = salario;
     }
-     
 
-    public void setSenha(String senha)  {
-            this.senha = senha;
-        
+    public void setSenha(String senha) {
+        this.senha = senha;
+
+    }
+
+    @Override
+    public String getCargo() {
+        return this.cargo;
+    }
+
+    @Override
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    @Override
+    public int compareTo(Proprietario o) {
+        if (this.getId() > o.getId()) {
+            return 1;
+        } else if (this.getId() < o.getId()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+    public static int getId() {
+        return id;
     }
     
 }
