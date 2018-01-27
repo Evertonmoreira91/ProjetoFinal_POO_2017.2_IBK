@@ -48,4 +48,9 @@ public abstract class Funcionario implements Serializable{
     @Override
     public abstract String toString();
 
+//    @Override
+//    public int compareTo(Funcionario o) {
+//        return this.getCargo().compareTo(o.getCargo());
+//    }
+
 }

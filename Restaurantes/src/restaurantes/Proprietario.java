@@ -26,6 +26,10 @@ public  class Proprietario extends Funcionario implements FuncionamentoExterno, 
 
     }
 
+    public Proprietario() {
+    }
+    
+
     @Override
     public void efectuarPagamento(float valor) {
         this.conta.saldo = this.conta.saldo + valor;
@@ -58,7 +62,7 @@ public  class Proprietario extends Funcionario implements FuncionamentoExterno, 
 
     @Override
     public String toString() {
-        return "Proprietario " + " - " + getNome() + " CPF: " + getCPF();
+        return getCargo()+ " - " + getNome() + " CPF: " + getCPF();
     }
 
     @Override
@@ -113,15 +117,9 @@ public  class Proprietario extends Funcionario implements FuncionamentoExterno, 
         this.cargo = cargo;
     }
 
-    @Override
+   
     public int compareTo(Proprietario o) {
-        if (this.getId() > o.getId()) {
-            return 1;
-        } else if (this.getId() < o.getId()) {
-            return -1;
-        } else {
-            return 0;
-        }
+         return this.getNome().compareTo(o.getNome());
     }
 
     public static int getId() {

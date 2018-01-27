@@ -5,11 +5,13 @@
  */
 package restaurantes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author WizIBK inck
  */
-public class Conta {
+public class Conta implements Serializable{
 
   
     protected float saldo;

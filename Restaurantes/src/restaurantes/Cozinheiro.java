@@ -27,11 +27,15 @@ public  class Cozinheiro extends Funcionario implements Comparable<Cozinheiro>,S
 
     }
 
+    public Cozinheiro() {
+    }
+    
+
     public int getId() {
         return id;
     }
 
-    @Override
+    
     public int compareTo(Cozinheiro o) {
 //        return this.nome.compareTo(o.getNome());
         if (this.getId() > o.getId()) {
@@ -61,10 +65,7 @@ public  class Cozinheiro extends Funcionario implements Comparable<Cozinheiro>,S
         return result;
     }
 
-    @Override
-    public String toString() {
-        return " Id " + getId() + " - " + getNome() + " CPF: " + getCPF();
-    }
+   
 
     @Override
     public String getNome() {
@@ -85,6 +86,12 @@ public  class Cozinheiro extends Funcionario implements Comparable<Cozinheiro>,S
 
     public String getSenha() {
         return this.senha;
+    }
+    
+     @Override
+    public String toString() {
+        return " Id " + getId() + " - "+ getCargo() +  " - " + getNome() + " CPF: " + getCPF();
+       
     }
 
     public void setCPF(String CPF) {

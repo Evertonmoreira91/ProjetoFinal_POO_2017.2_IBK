@@ -7,6 +7,7 @@ package restaurantes;
 
 import java.io.Serializable;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.TreeSet;
 
 /**
@@ -28,13 +29,17 @@ public  class Garçon extends Funcionario implements FuncionamentoExterno, Compa
         this.id = idDaClass++;
     }
 
-    public void efectuarPagamento(TreeSet<Proprietario> lista, float valor) {
+    public Garçon() {
+    }
+    
+
+    public void efectuarPagamento(List<Proprietario> lista, float valor) {
         for (Proprietario dono : lista) {
             dono.getConta().saldo = dono.getConta().saldo + valor;
         }
     }
 
-    public void devolverTroco(TreeSet<Proprietario> lista, float valor) {
+    public void devolverTroco(List<Proprietario> lista, float valor) {
         for (Proprietario dono : lista) {
             dono.getConta().saldo = dono.getConta().saldo + valor;
         }
@@ -44,7 +49,7 @@ public  class Garçon extends Funcionario implements FuncionamentoExterno, Compa
         return id;
     }
 
-    @Override
+   
     public int compareTo(Garçon o) {
         if (this.getId() > o.getId()) {
             return 1;
@@ -73,11 +78,7 @@ public  class Garçon extends Funcionario implements FuncionamentoExterno, Compa
         return result;
     }
 
-    @Override
-    public String toString() {
-        return " Id " + getId() + " - " + getNome() + " CPF: " + getCPF();
-    }
-
+   
     @Override
     public String getNome() {
         return this.nome;
@@ -98,7 +99,12 @@ public  class Garçon extends Funcionario implements FuncionamentoExterno, Compa
     public String getSenha() {
         return this.senha;
     }
-
+    
+ @Override
+    public String toString() {
+        return " Id " + getId() +  " - " + getCargo() +" - " + getNome() + " CPF: " + getCPF();
+    }
+    
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }

@@ -7,7 +7,9 @@ package restaurantes;
 
 import java.io.Serializable;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.TreeSet;
+import static javafx.scene.input.KeyCode.T;
 
 /**
  *
@@ -30,13 +32,17 @@ public  class Gerente extends Funcionario implements FuncionamentoExterno, Compa
 
     }
 
-    public void efectuarPagamento(TreeSet<Proprietario> lista, float valor) {
+    public Gerente() {
+    }
+    
+
+    public void efectuarPagamento(List<Proprietario> lista, float valor) {
         for (Proprietario dono : lista) {
             dono.getConta().saldo = dono.getConta().saldo + valor;
         }
     }
 
-    public void devolverTroco(TreeSet<Proprietario> lista, float valor) {
+    public void devolverTroco(List<Proprietario> lista, float valor) {
         for (Proprietario dono : lista) {
             dono.getConta().saldo = dono.getConta().saldo + valor;
         }
@@ -46,7 +52,7 @@ public  class Gerente extends Funcionario implements FuncionamentoExterno, Compa
         return id;
     }
 
-    @Override
+ 
     public int compareTo(Gerente o) {
 ////        return this.nome.compareTo(o.getNome());
         if (this.getId() > o.getId()) {
@@ -67,6 +73,7 @@ public  class Gerente extends Funcionario implements FuncionamentoExterno, Compa
             return (this.id == ((Gerente) obj).getId());
         }
     }
+   
 
     @Override
     public int hashCode() {
@@ -76,10 +83,6 @@ public  class Gerente extends Funcionario implements FuncionamentoExterno, Compa
         return result;
     }
 
-    @Override
-    public String toString() {
-        return " Id " + getId() + " - " + getNome() + " CPF: " + getCPF();
-    }
 
     @Override
     public String getNome() {
@@ -102,6 +105,11 @@ public  class Gerente extends Funcionario implements FuncionamentoExterno, Compa
         return this.senha;
     }
 
+     @Override
+    public String toString() {
+        return " Id " + getId() + " - "+ getCargo()+ " - " + getNome() + " CPF: " + getCPF();
+    }
+    
     public void setCPF(String CPF) {
         this.CPF = CPF;
     }
