@@ -5,11 +5,13 @@
  */
 package restaurantes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author WizIBK inck
  */
-public final class CervejaAlcool extends Bebida implements Comparable<CervejaAlcool>{
+public final class CervejaAlcool extends Bebida implements Comparable<CervejaAlcool>,Serializable{
     private static int idDaClasse;
        
     public CervejaAlcool(String name , int numero, float preço ) {

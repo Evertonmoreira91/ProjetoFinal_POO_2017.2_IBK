@@ -921,14 +921,12 @@ public class Restaurantes implements Serializable {
         Scanner in = new Scanner(System.in);
         Restaurantes OMEGA = new Restaurantes();
         boolean saida = false, permissão = false, pararOprograma = false;
-        String CPF, senha, cargo = null;
         int n, opção, primeiraveze = 0;
+        String CPF, senha, cargo = null;
         Proprietario usuario1 = new Proprietario();
-        Gerente usuario2= new Gerente();
+        Gerente usuario2 = new Gerente();
         Cozinheiro usuario3 = new Cozinheiro();
         Garçon usuario4 = new Garçon();
-  
-        
 
         System.out.println("inicializando os sistemas");
 
@@ -1034,14 +1032,14 @@ public class Restaurantes implements Serializable {
                     for (Funcionario Funcionarios : listaFuncionarios) {
                         if (Funcionarios.getCPF().equals(CPF) && (Funcionarios.getSenha().equals(senha))) {
                             cargo = Funcionarios.getCargo();
-                            if ("Proprietario".equals(cargo)){
-                                 usuario1 = (Proprietario)Funcionarios;
-                            }else if ("Gerente".equals(cargo)){
-                                 usuario2 = (Gerente)Funcionarios;
-                            }else if ("Cozinheiro".equals(cargo)){
-                                 usuario3 = (Cozinheiro)Funcionarios;
-                            }else if ("Garçon".equals(cargo)){
-                                 usuario4 = (Garçon)Funcionarios;
+                            if ("Proprietario".equals(cargo)) {
+                                usuario1 = (Proprietario) Funcionarios;
+                            } else if ("Gerente".equals(cargo)) {
+                                usuario2 = (Gerente) Funcionarios;
+                            } else if ("Cozinheiro".equals(cargo)) {
+                                usuario3 = (Cozinheiro) Funcionarios;
+                            } else if ("Garçon".equals(cargo)) {
+                                usuario4 = (Garçon) Funcionarios;
                             }
                             permissão = true;
                             break;
@@ -1052,7 +1050,7 @@ public class Restaurantes implements Serializable {
                         System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
                         if ("Proprietario".equals(cargo)) {
                             while (!saida) {
-                               
+
                                 System.out.println(" SE DESEJAR SAIR DO SISTEMA DIGITA <<(0)>>");
                                 System.out.println("  O QUE O SENHOR DESEJAR Fazer DO SISTEMA ? ");
                                 System.out.println(" (1)-- Cadastrar Prato");
@@ -1069,40 +1067,40 @@ public class Restaurantes implements Serializable {
                                 System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
                                 System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
 //                                for (Proprietario dono : listaDono) { }
-                                    System.out.println("juste un teste/n");
-                                    if (opção == 1) {
-                                        OMEGA.cadastrarPrato();
-                                    } else if (opção == 2) {
-                                        OMEGA.removerPrato();
-                                    } else if (opção == 3) {
-                                        OMEGA.cadastrarBebidas();
-                                    } else if (opção == 4) {
-                                        OMEGA.removerBebidas();
-                                    } else if (opção == 5) {
-                                        System.out.println("DIGITE O VALOR");
-                                       usuario1.efectuarPagamento(in.nextFloat());
-                                    } else if (opção == 6) {
-                                        System.out.println("DIGITE O VALOR");
-                                       usuario1.devolverTroco(in.nextFloat());
-                                    } else if (opção == 7) {
-                                        usuario1.pagarSalarioMensuais((TreeSet<Funcionario>) listaFuncionarios);
-                                    } else if (opção == 8) {
-                                        System.out.println("DIGITE O VALOR");
-                                        usuario1.pagarAsCompras(in.nextFloat());
-                                    } else if (opção == 9) {
-                                        System.out.println("DIGITE O VALOR");
-                                        usuario1.pagarAsManutenções(in.nextFloat());
-                                    } else if (opção == 10) {
-                                        OMEGA.imprimirCadarpio();
-                                    } else if (opção == 0) {
-                                        saida = true;
-                                        try {
-                                            OMEGA.geraArquivoCardapio();
-                                        } catch (Exception e) {
-                                            System.out.println("ERRO AO SALVAR ARQUIVO !");
-                                        }
+//                                System.out.println("juste un teste/n");
+                                if (opção == 1) {
+                                    OMEGA.cadastrarPrato();
+                                } else if (opção == 2) {
+                                    OMEGA.removerPrato();
+                                } else if (opção == 3) {
+                                    OMEGA.cadastrarBebidas();
+                                } else if (opção == 4) {
+                                    OMEGA.removerBebidas();
+                                } else if (opção == 5) {
+                                    System.out.println("DIGITE O VALOR");
+                                    usuario1.efectuarPagamento(in.nextFloat());
+                                } else if (opção == 6) {
+                                    System.out.println("DIGITE O VALOR");
+                                    usuario1.devolverTroco(in.nextFloat());
+                                } else if (opção == 7) {
+                                    usuario1.pagarSalarioMensuais((TreeSet<Funcionario>) listaFuncionarios);
+                                } else if (opção == 8) {
+                                    System.out.println("DIGITE O VALOR");
+                                    usuario1.pagarAsCompras(in.nextFloat());
+                                } else if (opção == 9) {
+                                    System.out.println("DIGITE O VALOR");
+                                    usuario1.pagarAsManutenções(in.nextFloat());
+                                } else if (opção == 10) {
+                                    OMEGA.imprimirCadarpio();
+                                } else if (opção == 0) {
+                                    saida = true;
+                                    try {
+                                        OMEGA.geraArquivoCardapio();
+                                    } catch (Exception e) {
+                                        System.out.println("ERRO AO SALVAR ARQUIVO !");
                                     }
-                               
+                                }
+
                             }
 
                         } else if ("Gerente".equals(cargo)) {
@@ -1112,7 +1110,7 @@ public class Restaurantes implements Serializable {
                                 System.out.println(" (1)-- Cadastrar Prato");
                                 System.out.println(" (2)-- Remover Prato");
                                 System.out.println(" (3)-- Cadastrar Bebida");
-                                System.out.println(" (4)-- Romover Bebida");
+                                System.out.println(" (4)-- Remover Bebida");
                                 System.out.println(" (5)-- Efectuar Pagamento");
                                 System.out.println(" (6)-- Devolver Troco");
                                 System.out.println(" (7)--Imprimir Cardapio");
@@ -1121,80 +1119,77 @@ public class Restaurantes implements Serializable {
                                 System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
 //                                for (Gerente gerente : listaGerente) {}
 //                                    if (gerente.getCPF().equals(CPF) && (gerente.getSenha().equals(senha))) {}
-                                        if (opção == 1) {
-                                            OMEGA.cadastrarPrato();
-                                        } else if (opção == 2) {
-                                            OMEGA.removerPrato();
-                                        } else if (opção == 3) {
-                                            OMEGA.cadastrarBebidas();
-                                        } else if (opção == 4) {
-                                            OMEGA.removerBebidas();
-                                        } else if (opção == 5) {
-                                            System.out.println("DIGITE O VALOR");
-                                            usuario2.efectuarPagamento(listaDono, in.nextFloat());
-                                        } else if (opção == 6) {
-                                            System.out.println("DIGITE O VALOR");
-                                            usuario2.devolverTroco(listaDono, in.nextFloat());
-                                        } else if (opção == 7) {
-                                            OMEGA.imprimirCadarpio();
-                                        } else if (opção == 0) {
-                                            saida = true;
-                                            try {
-                                                OMEGA.geraArquivoCardapio();
-                                            } catch (Exception e) {
-                                                 System.out.println("ERRO AO SALVAR ARQUIVO !");
-                                            }
-                                        }
+                                if (opção == 1) {
+                                    OMEGA.cadastrarPrato();
+                                } else if (opção == 2) {
+                                    OMEGA.removerPrato();
+                                } else if (opção == 3) {
+                                    OMEGA.cadastrarBebidas();
+                                } else if (opção == 4) {
+                                    OMEGA.removerBebidas();
+                                } else if (opção == 5) {
+                                    System.out.println("DIGITE O VALOR");
+                                    usuario2.efectuarPagamento(listaDono, in.nextFloat());
+                                } else if (opção == 6) {
+                                    System.out.println("DIGITE O VALOR");
+                                    usuario2.devolverTroco(listaDono, in.nextFloat());
+                                } else if (opção == 7) {
+                                    OMEGA.imprimirCadarpio();
+                                } else if (opção == 0) {
+                                    saida = true;
+                                    try {
+                                        OMEGA.geraArquivoCardapio();
+                                    } catch (Exception e) {
+                                        System.out.println("ERRO AO SALVAR ARQUIVO !");
+                                    }
+                                }
 //                                        break;
-                                    
-                                
+
                             }
 
                         } else if ("Cozinheiro".equals(cargo)) {
                             while (!saida) {
                                 System.out.println(" SE DESEJAR SAIR DO SISTEMA DIGITA-(0)");
-                                System.out.println("  O QUE O SENHOR DESEJAR Fazer DO SISTEMA ? ");
+                                System.out.println("  O QUE O SENHOR DESEJAR FAZER DO SISTEMA ? ");
                                 System.out.println(" (1)-- Cadastrar Prato");
                                 System.out.println(" (2)-- Remover Prato");
                                 System.out.println(" (3)-- Cadastrar Bebida");
-                                System.out.println(" (4)-- Romover Bebida");
+                                System.out.println(" (4)-- Remover Bebida");
                                 System.out.println(" (5)-- Imprimir Cardapio");
                                 opção = in.nextInt();
                                 System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
                                 System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
 //                                for (Cozinheiro cozinheiros : listaCozinheiro) { }
 //                                    if (cozinheiros.getCPF().equals(CPF) && (cozinheiros.getSenha().equals(senha))) {  }
-                                        if (opção == 1) {
-                                            OMEGA.cadastrarPrato();
-                                        } else if (opção == 2) {
-                                            OMEGA.removerPrato();
-                                        } else if (opção == 3) {
-                                            OMEGA.cadastrarBebidas();
-                                        } else if (opção == 4) {
-                                            OMEGA.removerBebidas();
-                                        } else if (opção == 5) {
-                                            OMEGA.imprimirCadarpio();
-                                        } else if (opção == 0) {
-                                            saida = true;
-                                            try {
-                                                OMEGA.geraArquivoCardapio();
-                                            } catch (Exception e) {
-                                                System.out.println("ERRO AO SALVAR ARQUIVO !");
-                                            }
-                                        }
+                                if (opção == 1) {
+                                    OMEGA.cadastrarPrato();
+                                } else if (opção == 2) {
+                                    OMEGA.removerPrato();
+                                } else if (opção == 3) {
+                                    OMEGA.cadastrarBebidas();
+                                } else if (opção == 4) {
+                                    OMEGA.removerBebidas();
+                                } else if (opção == 5) {
+                                    OMEGA.imprimirCadarpio();
+                                } else if (opção == 0) {
+                                    saida = true;
+                                    try {
+                                        OMEGA.geraArquivoCardapio();
+                                    } catch (Exception e) {
+                                        System.out.println("ERRO AO SALVAR ARQUIVO !");
+                                    }
+                                }
 //                                        break;
-                                  
-                               
 
                             }
                         } else if ("Garçon".equals(cargo)) {
                             while (!saida) {
                                 System.out.println(" SE DESEJAR SAIR DO SISTEMA DIGITA-(0)");
-                                System.out.println("  O QUE O SENHOR DESEJAR Fazer DO SISTEMA ? ");
+                                System.out.println("  O QUE O SENHOR DESEJAR FAZER DO SISTEMA ? ");
                                 System.out.println(" (1)-- Cadastrar Prato");
                                 System.out.println(" (2)-- Remover Prato");
                                 System.out.println(" (3)-- Cadastrar Bebida");
-                                System.out.println(" (4)-- Romover Bebida");
+                                System.out.println(" (4)-- Remover Bebida");
                                 System.out.println(" (5)-- Efectuar Pagamento");
                                 System.out.println(" (6)-- Devolver Troco");
                                 System.out.println(" (7)--Imprimir Cardapio");
@@ -1203,30 +1198,30 @@ public class Restaurantes implements Serializable {
                                 System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
 //                                for (Garçon garçon : listaGarçon) {
 //                                    if (garçon.getCPF().equals(CPF) && (garçon.getSenha().equals(senha))) {
-                                        if (opção == 1) {
-                                            OMEGA.cadastrarPrato();
-                                        } else if (opção == 2) {
-                                            OMEGA.removerPrato();
-                                        } else if (opção == 3) {
-                                            OMEGA.cadastrarBebidas();
-                                        } else if (opção == 4) {
-                                            OMEGA.removerBebidas();
-                                        } else if (opção == 5) {
-                                            System.out.println("DIGITE O VALOR");
-                                            usuario4.efectuarPagamento(listaDono, in.nextFloat());
-                                        } else if (opção == 6) {
-                                            System.out.println("DIGITE O VALOR");
-                                            usuario4.devolverTroco(listaDono, in.nextFloat());
-                                        } else if (opção == 7) {
-                                            OMEGA.imprimirCadarpio();
-                                        } else if (opção == 0) {
-                                            saida = true;
-                                            try {
-                                                OMEGA.geraArquivoCardapio();
-                                            } catch (Exception e) {
-                                               System.out.println("ERRO AO SALVAR ARQUIVO !");
-                                            }
-                                        }
+                                if (opção == 1) {
+                                    OMEGA.cadastrarPrato();
+                                } else if (opção == 2) {
+                                    OMEGA.removerPrato();
+                                } else if (opção == 3) {
+                                    OMEGA.cadastrarBebidas();
+                                } else if (opção == 4) {
+                                    OMEGA.removerBebidas();
+                                } else if (opção == 5) {
+                                    System.out.println("DIGITE O VALOR");
+                                    usuario4.efectuarPagamento(listaDono, in.nextFloat());
+                                } else if (opção == 6) {
+                                    System.out.println("DIGITE O VALOR");
+                                    usuario4.devolverTroco(listaDono, in.nextFloat());
+                                } else if (opção == 7) {
+                                    OMEGA.imprimirCadarpio();
+                                } else if (opção == 0) {
+                                    saida = true;
+                                    try {
+                                        OMEGA.geraArquivoCardapio();
+                                    } catch (Exception e) {
+                                        System.out.println("ERRO AO SALVAR ARQUIVO !" + e.getMessage());
+                                    }
+                                }
 //                                        break;
 //                                    }
 //                                }
@@ -1245,6 +1240,13 @@ public class Restaurantes implements Serializable {
             }
             System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
             System.out.printf("-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n");
+            CPF = null;
+            senha = null;
+            cargo = null;
+            usuario1 = new Proprietario();
+            usuario2 = new Gerente();
+            usuario3 = new Cozinheiro();
+            usuario4 = new Garçon();
             System.out.println("SE DESEJAR PARAR O PROGRAMA DIGITA << 0 >> CASO CONTRARIO DIGITE << 9 >>");
             if (in.nextInt() == 0) {
                 pararOprograma = true;

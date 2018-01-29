@@ -5,11 +5,13 @@
  */
 package restaurantes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author WizIBK inck
  */
-public final class Sucos extends Bebida implements Comparable<Sucos>{
+public final class Sucos extends Bebida implements Comparable<Sucos>,Serializable{
     
     private static int idDaClasse;
        

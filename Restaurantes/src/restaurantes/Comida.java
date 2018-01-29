@@ -5,11 +5,13 @@
  */
 package restaurantes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author WizIBK inck
  */
-public class Comida extends Prato implements Comparable<Comida>{
+public class Comida extends Prato implements Comparable<Comida>,Serializable{
     
     private static int idDaClasse;
      

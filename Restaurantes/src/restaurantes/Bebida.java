@@ -5,11 +5,13 @@
  */
 package restaurantes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author WizIBK inck
  */
-public abstract class Bebida {
+public abstract class Bebida implements Serializable{
     String nomeBebida ;
     int quantidade;
     int id;

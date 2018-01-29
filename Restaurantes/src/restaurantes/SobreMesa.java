@@ -5,11 +5,13 @@
  */
 package restaurantes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author WizIBK inck
  */
-public  class SobreMesa extends Prato implements Comparable<SobreMesa>{
+public  class SobreMesa extends Prato implements Comparable<SobreMesa>,Serializable{
        private static int idDaClasse;
        
     public SobreMesa(String name , int numero, float preço ) {
